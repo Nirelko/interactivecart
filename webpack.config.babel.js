@@ -7,8 +7,6 @@ const clientPort = 8000;
 module.exports = {
   entry: [
     'react-hot-loader/patch',
-    `webpack-dev-server/client?http://localhost:${clientPort}`,
-    'webpack/hot/only-dev-server',
     './app/client/index.js'
   ],
   output: {
