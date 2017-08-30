@@ -1,6 +1,6 @@
 import webpack, { HotModuleReplacementPlugin, NamedModulesPlugin } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { join, resolve } from 'path';
+import { join } from 'path';
 
 const clientPort = 8000;
 
@@ -21,10 +21,13 @@ module.exports = {
         use: 'babel-loader',
         exclude: /node_modules/
       },
-    //   {
-    //     test: /\.scss$/,
-    //     use: ['style-loader', 'css-loader', 'sass-loader']
-    //   },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
       {
         test: /\.woff(2)?(\?v=[0-9]+\.[0-9]+\.[0-9]+)?$/,
         use: [
@@ -50,7 +53,11 @@ module.exports = {
     new NamedModulesPlugin()
   ],
   resolve: {
-    extensions: ['.js', '.less', '.css', '.html']
+    extensions: [
+      '.js',
+      '.css',
+      '.html'
+    ]
   },
   devtool: 'eval-source-map',
   devServer: {
