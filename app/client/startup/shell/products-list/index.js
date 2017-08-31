@@ -1,18 +1,18 @@
-import React from 'react';
-import { Flex } from 'reflexbox';
+import { connect } from 'react-redux';
 
-import Product from './product';
+import ProductsList from './products-list';
+import { addProductToCart, removeProductFromCart } from './redux';
 
-export default () => {
-  const arr = ['1', '2', '3', '4'];
-
-  const items = arr.map(item => (
-    <Product product={item} key={item} />
-  ));
-
-  return (
-    <Flex column>
-      {items}
-    </Flex>
-  );
-};
+export default connect(
+  ({cart}) => ({
+    cart
+  }),
+  dispatch => ({
+    addProductToCart ({id}) {
+      return dispatch(addProductToCart(id));
+    },
+    removeProductFromCart ({id}) {
+      return dispatch(removeProductFromCart(id));
+    }
+  })
+)(ProductsList);
