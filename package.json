@@ -5,13 +5,15 @@
   "main": "app.js",
   "scripts": {
     "client-dev": "webpack-dev-server",
-    "app-dev": "nodemon --watch ./app ./app/ --ignore ./app/client ./node_modules --exec electron",
+    "app-dev": "nodemon --watch ./app ./app/ --ignore ./app/client ./node_modules --exec electron --inspect=5858",
     "dev": "npm-run-all --parallel client-dev app-dev"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "debounce": "^1.0.2",
     "electron": "^1.7.5",
+    "fs": "0.0.1-security",
     "lodash": "^4.17.4",
     "readline": "^1.3.0"
   },

@@ -1,13 +1,18 @@
 import { createActions, handleActions } from 'redux-actions';
+import _ from 'lodash';
 
 export const { addProductToCart, removeProductFromCart } = createActions('ADD_PRODUCT_TO_CART', 'REMOVE_PRODUCT_FROM_CART');
 
-let counter = 0;
-
 export default handleActions({
-  [addProductToCart]: state => [
-    ...state,
-    ++counter
-  ],
-  [removeProductFromCart]: (state, { payload: {id} }) => state.find(x => x !== id)
-}, []);
+  [addProductToCart]: (state, {payload: id}) => {
+    const newState = {...state};
+
+    if (!newState[id]) {
+      newState[id] = 0;
+    }
+    newState[id]++;
+
+    return newState;
+  },
+  [removeProductFromCart]: (state, { payload: {id} }) => _.pickBy(state, (value, key) => key !== id)
+}, {});

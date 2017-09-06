@@ -14,6 +14,7 @@ module.exports = {
     filename: '[name].[hash].js',
     publicPath: '/'
   },
+  target: 'electron',
   module: {
     rules: [
       {

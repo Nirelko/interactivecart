@@ -1,5 +1,8 @@
 import React from 'react';
+import { ListItem } from 'material-ui';
 
 export default ({ product }) => (
-  <span>{product}</span>
+  <ListItem>
+    <span>{product.id}: {product.count}</span>
+  </ListItem>
 );
