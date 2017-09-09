@@ -1,5 +1,8 @@
-const { app, globalShortcut } = require('electron');
-const MainWindow = require('./main');
+import 'dotenv-extended/config';
+import { app, globalShortcut } from 'electron';
+
+import MainWindow from './main';
+import './mongo';
 
 app.on('ready', () => {
   const mainWindow = new MainWindow();

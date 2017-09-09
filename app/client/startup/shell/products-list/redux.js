@@ -10,6 +10,7 @@ export default handleActions({
     if (!newState[id]) {
       newState[id] = 0;
     }
+
     newState[id]++;
 
     return newState;

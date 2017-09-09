@@ -1,7 +1,8 @@
-const { BrowserWindow } = require('electron');
-const BarcodeScannerManager = require('../managers/barcode-scanner.manager');
+import { BrowserWindow } from 'electron';
 
-module.exports = class MainWindow {
+import BarcodeScannerManager from '../api/managers/barcode-scanner.manager';
+
+export default class MainWindow {
   constructor () {
     this.window = new BrowserWindow({
       height: 400,

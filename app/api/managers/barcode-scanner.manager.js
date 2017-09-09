@@ -1,8 +1,8 @@
-const { globalShortcut } = require('electron');
-const debounce = require('debounce');
-const _ = require('lodash');
+import { globalShortcut } from 'electron';
+import debounce from 'debounce';
+import _ from 'lodash';
 
-module.exports = class BarcodeScannerManager {
+export default class BarcodeScannerManager {
   constructor () {
     this.onScansCallbacks = {};
 
@@ -15,7 +15,6 @@ module.exports = class BarcodeScannerManager {
     const sendBarcode = debounce(() => {
       const barcodeStr = _.join(barcode, '');
       
-      console.log(barcodeStr);
 
       _.forIn(this.onScansCallbacks, callback => callback(barcodeStr));
       barcode = [];
@@ -25,14 +24,8 @@ module.exports = class BarcodeScannerManager {
       barcode.push(number);
       sendBarcode();
     }));
-
-    /*globalShortcut.register('enter', () => {
-      const barcodeStr = _.join(barcode, '');
-
-      _.forIn(this.onScansCallbacks, callback => callback(barcodeStr));
-      barcode = [];
-    });*/
   }
+
   register (key, callback) {
     if (!this.onScansCallbacks[key]) {
       this.unregister(key);
