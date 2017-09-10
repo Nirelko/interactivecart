@@ -1,8 +1,14 @@
 import React from 'react';
 import { ListItem } from 'material-ui';
+import { Flex } from 'reflexbox';
+
+import Image from './image';
 
 export default ({ product }) => (
   <ListItem>
-    <span>{product.id}: {product.count}</span>
+    <Flex>
+      <Image image={product.image} />
+      <span>{product.details.id}: {product.count}</span>
+    </Flex>
   </ListItem>
 );

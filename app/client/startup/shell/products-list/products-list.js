@@ -6,8 +6,8 @@ import _ from 'lodash';
 import Product from './product';
 
 export default ({cart}) => {
-  const items = _.map(cart, (count, id) => (
-    <Product product={({id, count})} key={id} />
+  const items = _.map(cart, (product, id) => (
+    <Product product={product} key={id} />
   ));
 
   return (

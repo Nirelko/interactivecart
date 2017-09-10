@@ -4,14 +4,17 @@ import _ from 'lodash';
 export const { addProductToCart, removeProductFromCart } = createActions('ADD_PRODUCT_TO_CART', 'REMOVE_PRODUCT_FROM_CART');
 
 export default handleActions({
-  [addProductToCart]: (state, {payload: id}) => {
+  [addProductToCart]: (state, {payload: product}) => {
     const newState = {...state};
 
-    if (!newState[id]) {
-      newState[id] = 0;
+    if (!newState[product.id]) {
+      newState[product.id] = {
+        count: 0,
+        details: product
+      };
     }
 
-    newState[id]++;
+    newState[product.id].count++;
 
     return newState;
   },
