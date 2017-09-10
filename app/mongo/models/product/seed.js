@@ -5,12 +5,14 @@ export default seeder => {
     {
       id: '7290019297628',
       name: 'ששון הקולה שקד טבעי',
-      price: 15.60
+      price: 15.60,
+      image: {contentType: '', data: ''}
     },
     {
       id: '1',
       name: 'מוצר לבדיקה',
-      price: 11.11
+      price: 11.11,
+      image: {contentType: '', data: ''}
     }
   ]);
 };
